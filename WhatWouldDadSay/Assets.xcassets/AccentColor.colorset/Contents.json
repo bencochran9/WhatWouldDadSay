@@ -6,13 +6,6 @@
         "reference" : "darkTextColor"
       },
       "idiom" : "universal"
-    },
-    {
-      "color" : {
-        "platform" : "ios",
-        "reference" : "opaqueSeparatorColor"
-      },
-      "idiom" : "universal"
     }
   ],
   "info" : {

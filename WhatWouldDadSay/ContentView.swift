@@ -14,7 +14,7 @@ struct ContentView: View {
                    "No!",
                    "Go be a blessing to someone.",
                    "Remember to keep something in your pocket.",
-                   "Leave it better then you found it.",
+                   "Leave it better than you found it.",
                    "It's a little more complicated than that.",
                    "Don't be a troll!",
                    "Clean your room!",
@@ -23,9 +23,16 @@ struct ContentView: View {
                    "What did Mom say?",
                    "I am so excited!",
                    "Treat others with kindness, ALWAYS!",
-                   "No, you can't say home from school.",
+                   "No, you can't stay home from school.",
                    "Go ride a bike.",
                    "just some mumbling ...",
+                   "You can’t have your own truth as the truth is independent of us. What we have is our perspectives.",
+                   "Tomorrow is a new day with new graces.",
+                   "The first day is always hard.",
+                   "\"This this is why we can’t have nice things\" - Taylor Swift",
+                   "\"You’re being too loud you need to calm down\" - Taylor Swift",
+                   "\"Cause forgiveness is a nice thing to do\" - Taylor Swift",
+                   "\"It feels like one of those nights\" - Taylor Swift",
                    "Is everyone okay? Good! Now, how did this happen?",
                    "\"Life should not be a journey to the grave with the intention of arriving safely in a pretty and well preserved body, but rather to skid in broadside in a cloud of smoke, thoroughly used up, totally worn out, and loudly proclaiming Wow! What a Ride!\" - Hunter S. Thompson"
                   ]
@@ -43,7 +50,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity, alignment: .top)
-                
+                    //.animation( .easeIn (duration: 0.15) )
                 VStack(){
                     Spacer()
                     
@@ -54,6 +61,7 @@ struct ContentView: View {
                         .font(.system (size: 30.0))
                         .frame(maxWidth: .infinity, alignment: .bottom )
                         .background(Color.black.opacity(0.4))
+                        .animation( .easeIn (duration: 0.15) )
                 }
             }.onTapGesture {
                 debugPrint ("onTap");
@@ -106,8 +114,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
+            //    .previewInterfaceOrientation(.portrait)
             //    .previewInterfaceOrientation(.landscapeRight)
             ContentView()
+            //    .previewInterfaceOrientation(.portraitUpsideDown)
             //    .previewInterfaceOrientation(.landscapeLeft)
         }
     }
