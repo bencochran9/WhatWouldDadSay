@@ -39,6 +39,49 @@ struct ContentView: View {
     
     @State private var updateEvent : Bool = false;
 
+    //
+    // Adding App Init here.
+    init (){
+        debugPrint ("Init View");
+        
+        let noteSaying = sayings[ Int.random(in: 0..<sayings.count) ];
+        
+        // Ask if we can send Notifications, then add. 
+        let notificationCenter = UNUserNotificationCenter.current();
+        notificationCenter.removeAllPendingNotificationRequests();      // clear any pending notefcation.
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Add Set Up a timer to set a notification");
+             
+                let noteContent = UNMutableNotificationContent();
+                noteContent.title = "What Would Dad Say?";
+                noteContent.body = noteSaying;
+                noteContent.categoryIdentifier = "alarm";
+                noteContent.userInfo = ["customData": "fizzbuzz"];
+                noteContent.sound = UNNotificationSound.default;
+
+                // Trigger ever one day from now.
+                let noteTrigger = UNTimeIntervalNotificationTrigger (timeInterval: (1440), repeats: false)
+                                
+                // Create the request
+                let uuidString = UUID().uuidString
+                let request = UNNotificationRequest(identifier: uuidString,
+                            content: noteContent, trigger: noteTrigger)
+
+                // Schedule the request with the system.
+                notificationCenter.add(request) { (error) in
+                   if error != nil {
+                      // Handle any errors.
+                       print("Error Adding Notification!")
+                   }
+                }
+
+            } else {
+                print("Don't add Notifications");
+            }
+        }
+    }
+    
     var body: some View {
         HStack{
             Spacer()
